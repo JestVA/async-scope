@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="output"></div>
+  <script>
+    /*
+  This should output "Succeed" with each letter on a new line, 
+  with each letter being followed by the results of a web service call.
+
+  Tasks: 
+    1) Fix this code.  Why does it do what it does?
+    2) Refactor the code to encapsulate the functionality
+  */
+  // ~~~~~~~~~~~~~SOLUTION~~~~~~~~~~~~~~
+  /* This could be done multiple ways (callback function, promise etc) but a simple fix that I found
+   was to declare the item variable with let inside the block scope of the iterative for() loop. 
+   This will prevent "hoisting". With "let" we encapsulate (create scope) for every iteration
+    of item while it loops through the index s[i].
+  */
+
+  // We start by commenting this line,
+  /* var i, item; */  
+  var s = "Succeed";
+  for (i = 0 ; i < s.length ; i++){
+    // and then we declare the variable inside the block scope of the for loop :) Run index.html in browser
+    // to see it working live.
+      let item = s[i];
+      $.get('http://echo.jsontest.com/returnMe/aValue').done(function(ret){
+          $("<p>" + item + " " + JSON.stringify(ret) + "</p>").appendTo($('#output'));
+      });
+  }
+  </script>
+</body>
+</html>
