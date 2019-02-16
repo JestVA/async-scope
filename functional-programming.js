@@ -11,13 +11,15 @@ coolifier("conference");
 // another example
 
 function addContact(id, refreshCallback) {
-    refreshCallback();
+    // refreshCallback();
     // You can also pass arguments if you need to
-    // refreshCallback(id);
+    refreshCallback(10);
 }
 
-function refreshContactList() {
-    alert('Hello World');
+function refreshContactList(id) {
+    alert(`Refreshed id: ${id}`);
 }
 
-addContact(1, refreshContactList);
+// addContact(1, refreshContactList);
+addContact(1, refreshContactList) 
+
