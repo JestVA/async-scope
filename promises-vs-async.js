@@ -8,3 +8,13 @@ function resolve_after_3_seconds() {
 }
 
 resolve_after_3_seconds().then(data => console.log(data))
+
+
+// Async example
+
+async function getNewDataAsync() {
+    const result = await resolve_after_3_seconds();
+    console.log(result)
+}
+
+getNewDataAsync()
